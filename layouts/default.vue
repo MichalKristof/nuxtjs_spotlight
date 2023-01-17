@@ -24,7 +24,7 @@
     </header>
 
     <div class="w-9/12 bg-white dark:bg-neutral-900 text-black dark:text-white justify-center">
-      <div class="flex w-full mt-40 mb-20 px-14">
+      <div class="flex w-full mt-40 mb-20 px-24">
         <slot />
       </div>
     </div>

@@ -5,6 +5,14 @@ export default defineNuxtConfig({
         '@nuxtjs/color-mode',
         '@nuxtjs/sanity',
     ],
+    runtimeConfig: {
+        sanity: {
+            token: process.env.NUXT_SANITY_TOKEN,
+        },
+    },
+    sanity: {
+        projectId: 'whvysxzu',
+    },
 
     colorMode: {
         classSuffix: '',

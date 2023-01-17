@@ -13,7 +13,6 @@
     "nuxt": "3.0.0"
   },
   "dependencies": {
-    "@nuxtjs/sanity": "^1.5.0",
-    "@sanity/client": "^4.0.1"
+    "@nuxtjs/sanity": "^1.5.0"
   }
 }
