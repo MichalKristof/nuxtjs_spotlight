@@ -1,7 +1,7 @@
 export default {
-    name: 'article',
+    name: 'project',
     type: 'document',
-    title: 'Article',
+    title: 'Project',
     fields: [
         {
             name: 'title',
@@ -9,14 +9,14 @@ export default {
             type: 'string',
         },
         {
-            name: 'content',
-            title: 'Content',
+            name: 'text',
+            title: 'Text',
             type: 'text',
         },
         {
-            name: 'date',
-            title: 'Date',
-            type: 'date',
+            name: 'link',
+            title: 'Link',
+            type: 'string',
         },
     ]
 }
