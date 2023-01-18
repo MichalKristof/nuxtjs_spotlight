@@ -1,6 +1,6 @@
 <template>
   <div class="relative flex flex-col w-full h-auto bg-gray-50 dark:bg-black items-center">
-    <header class="absolute w-full md:w-9/12 fixed-top mt-4 px-2 md:px-14">
+    <header class="header w-full md:w-9/12 fixed top-0 z-10 inset-x-0 px-2 md:px-14 mx-auto" :class="{ 'is-hidden': !showHeader }">>
       <nav class="container flex w-auto justify-between">
         <ul class="flex w-12 h-12">
           <a href="/" class="w-full h-full bg-center bg-cover bg-[url('/images/avatar.jpg')] border border-gray-200 dark:border-neutral-700 rounded-full" v-show="$route.path !== '/'">
@@ -51,6 +51,14 @@
 .router-link-exact-active {
   color: #b2dfdb;
 }
+.header {
+  transform: translateY(0);
+  transition: transform 300ms linear;
+}
+
+.header.is-hidden {
+  transform: translateY(-100%);
+}
 </style>
 
 <script setup lang="ts">
@@ -60,4 +68,34 @@ const setColorTheme = (newTheme: Theme) => {
   console.log('change theme color');
   useColorMode().preference = newTheme
 }</script>
+
+<script lang="ts">
+export default {
+  data: () => ({
+    showHeader: true,
+    lastScrollPosition: 0,
+    scrollOffset: 40,
+  }),
+  mounted() {
+    this.lastScrollPosition = window.pageYOffset
+    window.addEventListener('scroll', this.onScroll)
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.onScroll)
+  },
+  methods: {
+    // Toggle if navigation is shown or hidden
+    onScroll() {
+      if (window.pageYOffset < 0) {
+        return
+      }
+      if (Math.abs(window.pageYOffset - this.lastScrollPosition) < this.scrollOffset) {
+        return
+      }
+      this.showHeader = window.pageYOffset < this.lastScrollPosition
+      this.lastScrollPosition = window.pageYOffset
+    },
+  }
+};
+</script>
 
